@@ -10,6 +10,7 @@ import androidx.navigation.navArgument
 import com.example.mytodo.ui.home.HomeDestination
 import com.example.mytodo.ui.home.HomeScreen
 import com.example.mytodo.ui.item.ItemEditDestination
+import com.example.mytodo.ui.item.ItemEditScreen
 import com.example.mytodo.ui.item.ItemEntryDestination
 import com.example.mytodo.ui.item.ItemEntryScreen
 
@@ -25,7 +26,7 @@ fun TodoNavHost(
     ) {
          composable(route = HomeDestination.route) {
             HomeScreen(navigateToItemEntry = {
-                navController.navigate(ItemEditDestination.route)
+                navController.navigate(ItemEntryDestination.route)
             }, navigateToItemUpdate = {
                 navController.navigate("${ItemEditDestination.route}/${it}")
             })
@@ -47,7 +48,7 @@ fun TodoNavHost(
                 type = NavType.IntType
             })
         ) {
-            ItemEntryScreen(navigateBack = {
+            ItemEditScreen(navigateBack = {
                 if (navController.previousBackStackEntry != null) {
                     navController.popBackStack()
                 }
